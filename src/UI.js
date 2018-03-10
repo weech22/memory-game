@@ -91,7 +91,7 @@ export const CardImage = styled.img`
   width: 90%;
   height: 90%;
   cursor: pointer;
-  display: ${props => (props.isVisible ? 'inline' : 'none')};
+  opacity: ${props => (props.isVisible ? '1' : '0')};
 `;
 
 export const Title = styled.h1`

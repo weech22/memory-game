@@ -4,7 +4,7 @@ import { NewGameButton, PointsBlock, Points, CardWrap as Wrap, GameHeader } from
 
 const cardChangeDelay = 1000;
 const cardShowTime = 5000;
-const endScreenDelay = 2500;
+const endScreenDelay = 1000;
 const pairCount = 9;
 const suits = ['C', 'D', 'H', 'S'];
 const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
@@ -17,7 +17,7 @@ const initializeDeck = () => {
   const topCards = [...Array(52).keys()]
     .slice()
     .sort(shuffle)
-    .slice(1, pairCount + 1);
+    .slice(0, pairCount);
   return [...topCards, ...topCards]
     .slice()
     .sort(shuffle)
@@ -30,7 +30,7 @@ const initializeDeck = () => {
     }));
 };
 
-const updatedDeck = (state, field, value) =>
+const updateDeck = (state, field, value) =>
   state.deck.map((card, index) => {
     if (state.selectedCards.reduce((result, a) => result || a.id === index, false)) {
       return {
@@ -88,7 +88,7 @@ class GameScreen extends Component {
       this.setState(
         () => ({ selectedCards: [...this.state.selectedCards, card] }),
         () => {
-          this.setState({ deck: updatedDeck(this.state, 'isFaceUp', true) });
+          this.setState({ deck: updateDeck(this.state, 'isFaceUp', true) });
           if (this.state.selectedCards.length === 2) {
             if (isMatch(this.state.selectedCards)) {
               this.setState(
@@ -113,7 +113,7 @@ class GameScreen extends Component {
               );
               setTimeout(() => {
                 this.setState(
-                  () => ({ deck: updatedDeck(this.state, 'isVisible', false) }),
+                  () => ({ deck: updateDeck(this.state, 'isVisible', false) }),
                   () => {
                     this.setState({ selectedCards: [] });
                   },
@@ -125,7 +125,7 @@ class GameScreen extends Component {
               });
               setTimeout(() => {
                 this.setState(
-                  () => ({ deck: updatedDeck(this.state, 'isFaceUp', false) }),
+                  () => ({ deck: updateDeck(this.state, 'isFaceUp', false) }),
                   () => {
                     this.setState({ selectedCards: [] });
                   },
