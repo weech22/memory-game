@@ -12,7 +12,7 @@ const StartScreen = () => (
       <GameLogo src={gameLogo} alt="Memory Game" />
       <Title>MEMORY GAME</Title>
       <Link to="/game">
-        <PlayButton data-tid="NewGame-startGame">Начать игру</PlayButton>
+        <PlayButton data-tid="NewGame-startGame">Play</PlayButton>
       </Link>
     </LogoBlock>
   </Wrap>

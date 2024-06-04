@@ -24,10 +24,10 @@ const EndGameScreen = props => (
     <LogoBlock>
       <GameLogo src={gameLogo} alt="Memory Game" />
       <Congrats>
-        Поздравляем!<br />Ваш итоговый счёт: {props.location.points}
+        Congrats!<br />Your final score: {props.location.points}
       </Congrats>
       <Link to="/">
-        <RetryButton data-tid="EndGame-retryGame">Ещё раз</RetryButton>
+        <RetryButton data-tid="EndGame-retryGame">Play again</RetryButton>
       </Link>
     </LogoBlock>
   </Wrap>

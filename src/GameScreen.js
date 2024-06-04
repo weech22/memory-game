@@ -148,10 +148,10 @@ class GameScreen extends Component {
               disabled={this.state.pregameShow}
               data-tid="Menu-newGame"
             >
-              Начать заново
+              Restart
             </NewGameButton>
             <PointsBlock>
-              Очки: <Points data-tid="Menu-scores">{this.state.points}</Points>
+              Points: <Points data-tid="Menu-scores">{this.state.points}</Points>
             </PointsBlock>
           </div>
         </GameHeader>
